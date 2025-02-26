@@ -1,0 +1,348 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Stay In Hotel";
+}
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="navbar-brand-container">
+            <a class="navbar-brand" href="#">Stay Go Hotel</a>
+            <a class="contact" href="#">09235618931 | Contact Us</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Home link routes to the index page -->
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#servicesModal">Services</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        EN
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="#">EN</a></li>
+                        <li><a class="dropdown-item" href="#">ES</a></li>
+                        <li><a class="dropdown-item" href="#">FR</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login/Register</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="hero position-relative text-white">
+    <div class="overlay"></div>
+    <div class="content text-left" style="margin-left: 20px;">
+        <!-- Added margin-left for left alignment -->
+        <h1 class="display-5 italic-text">Where Every Stay Feels Special</h1> <!-- Added italic-text class -->
+        <div class="d-flex justify-content-start mt-3">
+            <!-- Changed to justify-content-start -->
+            <button class="btn btn-warning italic-text" style="margin-left: 250px;" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Now</button> <!-- Added margin-left -->
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section with Images -->
+<div class="footer position-relative text-white py-5">
+    <div class="footer-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/hotel lobby.webp" class="img-fluid rounded">
+                <h3 class="text-center mt-2">Luxurious Lobby</h3>
+            </div>
+            <div class="col-md-4">
+                <img src="~/pool.webp" class="img-fluid rounded">
+                <h3 class="text-center mt-2">Relaxing Pool</h3>
+            </div>
+            <div class="col-md-4">
+                <img src="~/spa2.webp" class="img-fluid rounded">
+                <h3 class="text-center mt-2">Spa & Wellness</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="homeModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Home</h5>
+            </div>
+            <div class="modal-body">
+                Welcome to the Home section.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="aboutModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>About Us</h5>
+            </div>
+            <div class="modal-body">
+                Welcome to Stay Go Hotel, where luxury meets comfort in the heart of Cebu City.
+                Whether you’re traveling for business or leisure, we provide a world-class hospitality
+                experience tailored to your needs. At Stay Go Hotel, we take pride in offering elegant accommodations,
+                exceptional dining, and outstanding service. Our well-appointed rooms and suites are designed for
+                relaxation, featuring modern amenities, plush bedding, and breathtaking views.
+                Indulge in our signature restaurant’s exquisite cuisine, unwind at our spa,
+                or take a dip in our scenic pool. Our dedicated team ensures a seamless stay,
+                offering personalized services to make your visit truly unforgettable.
+                We are the perfect destination for travelers
+                looking to explore the vibrant city while enjoying a peaceful retreat.
+                Experience hospitality at its finest at Stay Go Hotel—where every stay is a memorable journey.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="servicesModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Our Services</h5>
+            </div>
+            <div class="modal-body">
+                At Stay Go Hotel, we are committed to providing a seamless and unforgettable
+                experience with our top-tier services and amenities:
+                </p>
+                <h3>Accomodation</h3>
+                <ul>
+                    <li>Luxurious rooms and suites with modern décor</li>
+                    <li>Complimentary high-speed Wi-Fi</li>
+                    <li>24/7 room service</li>
+                    <li>Daily housekeeping and turndown service</li>
+                </ul>
+                <h3> Wellness & Recreation</h3>
+                <ul>
+                    <li>Full-service spa and wellness center</li>
+                    <li>Outdoor/Indoor swimming pool</li>
+                    <li>State-of-the-art fitness center</li>
+                    <li>Yoga and meditation sessions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loginModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>WELCOME!</h5>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3 text-left">
+                        <a href="#" id="forgot" style="color: #916A2F;">Forgot Password?</a>
+                    </div>
+                    <button type="submit" id="loginbutton" class="btn btn-warning btn-short">LOGIN</button>
+                    <p class="text-center mt-3">Don't have an account? <a href="#" id="signup" data-bs-toggle="modal" data-bs-target="#signupModal" style="color: #916A2F;">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="signupModal" data-bs-backdrop="true" data-bs-keyboard="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="signup-form">
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullname" name="fullname" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" id="signupbutton" class="btn btn-warning btn-short">SIGN UP</button>
+                    <p class="text-center mt-3">Already have an account? <a href="#" id="login" data-bs-toggle="modal" data-bs-target="#loginModal" style="color: #916A2F;">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="bookingModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Book Your Stay</h5>
+            </div>
+            <div class="modal-body">
+                Booking form goes here...
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom CSS -->
+<style>
+    .hero {
+        background: url('hotel.jpg') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; 
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        padding-left: 20px; 
+    }
+
+    .navbar {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer Styling */
+    .footer {
+        background: url('hotel.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+        padding: 50px 0;
+    }
+
+    .footer-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .footer .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer img {
+        transition: transform 0.3s ease;
+    }
+
+        .footer img:hover {
+            transform: scale(1.05);
+        }
+
+    /* Language Changer Styling */
+    .nav-item.dropdown .dropdown-toggle {
+        background-color: transparent;
+        border: none;
+        color: white;
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-item.dropdown .dropdown-menu {
+        background-color: #333;
+        border: none;
+    }
+
+    .nav-item.dropdown .dropdown-item {
+        color: white;
+    }
+
+        .nav-item.dropdown .dropdown-item:hover {
+            background-color: #444;
+        }
+
+    /* Modal Styling */
+    .modal-content {
+        background-color: #1E1E1E;
+        color: white;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #333;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .navbar-brand-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .contact {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+    }
+
+        .contact:hover {
+            color: white;
+        }
+
+    .text-left {
+        text-align: right;
+    }
+
+    /* Shorter buttons */
+    .btn-short {
+        width: 50%; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the button */
+        display: block; /* Ensure the button is block-level for centering */
+    }
+
+    /* Italic text */
+    .italic-text {
+        font-style: italic;
+    }
+</style>
