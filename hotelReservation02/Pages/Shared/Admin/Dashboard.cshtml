@@ -1,0 +1,324 @@
+﻿@page
+@model hotelReservation02.Pages.Admin.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="dashboard-container">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-md-block sidebar">
+            <div class="position-sticky pt-3">
+                <h4 class="text-light text-center mt-3">Stay Go Hotel</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#">📊 Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">📅 Manage Reservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">🏨 Room Management</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">🛠 Housekeeping</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">📢 Feedback & Reviews</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Dashboard -->
+        <main class="col-md-10 ms-sm-auto px-md-4">
+            <div class="overview mt-4">
+                <h2 class="text-light">Overview</h2>
+            </div>
+
+            <div class="row mt-4">
+                <!-- Overview Cards -->
+                <div class="col-md-3">
+                    <div class="card overview-card">
+                        <div class="card-body">
+                            <h5>Total Check-in</h5>
+                            <p class="fs-5">23</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card overview-card">
+                        <div class="card-body">
+                            <h5>Total Check-out</h5>
+                            <p class="fs-5">13</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card overview-card">
+                        <div class="card-body">
+                            <h5>Total In Hotel</h5>
+                            <p class="fs-5">60</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card overview-card">
+                        <div class="card-body">
+                            <h5>Total Occupied Rooms</h5>
+                            <p class="fs-5">90</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room Statistics -->
+            <h4 class="text-light mt-4">Rooms</h4>
+            <div class="row mt-4 g-4">
+                <!-- Overview Cards -->
+                <div class="row mt-4">
+                    <!-- Room Card -->
+                    <div class="col-md-3">
+                        <div class="room-card">
+                            <span class="deal-badge">2 Deals</span>
+                            <div class="room-content">
+                                <h5 class="room-title">Standard Room</h5>
+                                <p class="availability">2/30</p>
+                                <p class="price"><span class="highlight">1,000</span> / day</p>
+                            </div>
+                            <span class="more-options">⋮</span>
+                        </div>
+                    </div>
+
+                    <!-- Double Standard Room -->
+                    <div class="col-md-3">
+                        <div class="room-card">
+                            <span class="deal-badge">6 Deals</span>
+                            <div class="room-content">
+                                <h5 class="room-title">Double Standard Room</h5>
+                                <p class="availability">2/35</p>
+                                <p class="price"><span class="highlight">989</span> / day</p>
+                            </div>
+                            <span class="more-options">⋮</span>
+                        </div>
+                    </div>
+
+                    <!-- Deluxe Room -->
+                    <div class="col-md-3">
+                        <div class="room-card">
+                            <span class="deal-badge">1 Deal</span>
+                            <div class="room-content">
+                                <h5 class="room-title">Deluxe Room</h5>
+                                <p class="availability">2/25</p>
+                                <p class="price"><span class="highlight">1,500</span> / day</p>
+                            </div>
+                            <span class="more-options">⋮</span>
+                        </div>
+                    </div>
+
+                    <!-- Executive Room -->
+                    <div class="col-md-3">
+                        <div class="room-card">
+                            <span class="deal-badge">20 Deals</span>
+                            <div class="room-content">
+                                <h5 class="room-title">Executive Room</h5>
+                                <p class="availability">4/10</p>
+                                <p class="price"><span class="highlight">2,000</span> / day</p>
+                            </div>
+                            <span class="more-options">⋮</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Chart Section -->
+                <div class="chart-container">
+                    <canvas id="occupancyChart"></canvas>
+                </div>
+        </main>
+    </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    body {
+        background: url('admin.png') no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+
+    .dashboard-container {
+        display: flex;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Ensure sidebar is properly fixed on the left */
+    .sidebar {
+        height: 100vh;
+        width: 250px; /* Sidebar width */
+        background-color: #0F0025;
+        color: white;
+        position: fixed;
+        left: 0;
+        top: 0;
+        margin: 0;
+        padding: 20px 0;
+        z-index: 1000;
+        flex-shrink: 0;
+    }
+
+    /*Overview*/
+    main {
+        flex-grow: 1; /* Allow main content to take remaining space */
+        padding: 10px;
+        margin-left: 30px; /* Ensure it starts directly beside sidebar */
+        width: calc(100% - 250px); /* Prevent unnecessary spacing */
+    }
+
+
+    .nav-link {
+        color: white;
+        padding: 10px;
+        transition: 0.3s;
+    }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+    .overview {
+        padding-left: 0px; /* Remove unnecessary left padding */
+        text-align: left; /* Ensure text is aligned to the left */
+    }
+
+    .overview-card {
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        padding: 10px; /* Reduce padding */
+        font-size: 14px; /* Reduce text size */
+        width: 100%; /* Allow Bootstrap grid to handle width */
+        height: 100px; /* Reduce card height */
+        display: flex;
+        margin-left: 0px;
+        justify-content: center;
+        opacity: 0.9;
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    .table {
+        margin-left: 0px; /* Ensure table starts from the left */
+        width: 100%; /* Let it expand naturally */
+    }
+
+    .chart-container {
+        width: 400px; /* Set the desired width */
+        height: 300px; /* Set the desired height */
+        margin-top: 30px;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin-left: 30px;
+    }
+
+
+    /* Room Statistics Card */
+    .room-card {
+        position: relative; /* Transparent effect */
+        border-radius: 12px;
+        border: 1px solid white;
+        padding: 15px;
+        width: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        min-height: 130px;
+        text-align: center;
+        margin: 5px 20px;
+    }
+
+        .room-card:hover {
+            transform: scale(1.05);
+        }
+
+    /* Deals Badge */
+    .deal-badge {
+        background: #4CAF50; /* Green Badge */
+        color: white;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 5px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    /* Room Content */
+    .room-content {
+        padding: 10px;
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .room-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .availability {
+        font-size: 14px;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Price Styling */
+    .price {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .highlight {
+        font-size: 18px;
+        font-weight: bold;
+        color: #00aaff !important; /* Ensures blue color */
+    }
+
+    /* More Options Icon */
+    .more-options {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+</style>
+
+<!-- Add Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('occupancyChart').getContext('2d');
+    var occupancyChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+            datasets: [{
+                label: 'Occupancy Rate',
+                data: [40, 60, 30, 80, 50, 70, 90, 60, 80, 85],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
