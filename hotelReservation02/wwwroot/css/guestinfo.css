@@ -1,0 +1,37 @@
+.guest-info-container {
+    padding: 20px;
+    background: url('/images/background.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+h2 {
+    color: white;
+    font-size: 24px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.guest-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+    .guest-table th, .guest-table td {
+        padding: 10px;
+        color: white;
+        text-align: left;
+    }
+
+    .guest-table th {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .guest-table tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.1);
+    }

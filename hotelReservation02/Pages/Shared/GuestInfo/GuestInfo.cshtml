@@ -1,0 +1,31 @@
+@section Styles {
+    <link rel="stylesheet" href="~/css/guestinfo.css">
+}
+
+<div class="guest-info-container">
+    <h2>Guest Information</h2>
+    <input type="text" placeholder="Search: Room / Name / Mobile / Email / Room Type" class="search-bar">
+    
+    <table class="guest-table">
+        <thead>
+            <tr>
+                <th>ROOM #</th>
+                <th>CUSTOMER NAME</th>
+                <th>MOBILE #</th>
+                <th>EMAIL/YAHOO</th>
+                <th>ROOM TYPE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 10; i++) {
+                <tr>
+                    <td>00001</td>
+                    <td>John Smith</td>
+                    <td>09123456789</td>
+                    <td>johnsmith@gmail.com</td>
+                    <td>DELUXE ROOM</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
